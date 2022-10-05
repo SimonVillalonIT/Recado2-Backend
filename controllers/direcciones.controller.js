@@ -63,3 +63,42 @@ export const postProveedor = async(req, res) => {
     res.status(200).send("Proveedor agregado con exito")
 
 }
+
+
+export const postDeleteProveedor = async(req, res) => {
+    const { id } = req.params
+    try {
+
+        await pool.query(
+            "DELETE FROM proveedores WHERE ID = ?", [id]
+        )
+    } catch (error) {
+        console.log(error)
+    }
+    res.status(200).send("Proveedor eliminado con exito")
+
+}
+
+export const postDeleteLinea = async(req, res) => {
+    const { id } = req.params
+    try {
+        await pool.query(
+            "DELETE FROM direcciones WHERE ID = ?", [id]
+        )
+    } catch (error) {
+        console.log(error)
+    }
+    res.status(200).send("Linea eliminada con exito")
+}
+
+
+export const updateProveedor = async(req, res) => {
+    const { id } = req.params
+    try {
+        await pool.query(
+            "UPDATE `proveedor` SET `Disponible` = IF(`Disponible` = 1, 0, 1) WHERE `id` =" + id)
+        res.status(200).send("Actualizado con exitoso")
+    } catch (error) {
+        console.log(error)
+    }
+}
