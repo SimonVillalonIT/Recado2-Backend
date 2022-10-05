@@ -96,8 +96,8 @@ export const updateProveedor = async(req, res) => {
     const { id } = req.params
     try {
         await pool.query(
-            "UPDATE `proveedor` SET `Disponible` = IF(`Disponible` = 1, 0, 1) WHERE `id` =" + id)
-        res.status(200).send("Actualizado con exitoso")
+            `UPDATE proveedores SET Disponible = IF(Disponible = 1, 0, 1) WHERE id = ${id}`)
+        res.status(200).send("Actualizado con exito")
     } catch (error) {
         console.log(error)
     }

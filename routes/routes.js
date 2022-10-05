@@ -31,5 +31,5 @@ router.post("/direcciones", postDirecciones);
 
 router.post("/relaciones/:id", relacionarTablas)
 
-router.post("/actualizarProveedor", updateProveedor)
+router.post("/actualizarProveedor/:id", updateProveedor)
 export default router;
