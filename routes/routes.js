@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
     getConsumo,
+    getDireccion,
     getDirecciones,
     getProveedores,
     postDeleteLinea,
@@ -15,7 +16,7 @@ const router = Router();
 
 router.get("/direcciones", getDirecciones);
 
-router.get("/direccion/:id", getDirecciones);
+router.get("/direccion/:id", getDireccion);
 
 router.get("/consumo", getConsumo);
 

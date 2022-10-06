@@ -9,9 +9,11 @@ export const getDirecciones = async(req, res) => {
     res.json(resultado);
 };
 export const getDireccion = async(req, res) => {
-    const [result] = await pool.query("SELECT * FROM direcciones WHERE id = ?", [
-        req.params.id,
-    ]);
+    let id = req.params.id
+
+    const [result] = await pool.query(
+        `SELECT * FROM direcciones WHERE ID = ${id}`
+    );
     res.json(result);
 };
 
