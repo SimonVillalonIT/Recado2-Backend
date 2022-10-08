@@ -1,15 +1,17 @@
 import { Router } from "express";
 import {
-    getConsumo,
-    getDireccion,
-    getDirecciones,
-    getProveedores,
-    postDeleteLinea,
-    postDeleteProveedor,
-    postDirecciones,
-    postProveedor,
-    relacionarTablas,
-    updateProveedor,
+  getConsumo,
+  getDireccion,
+  getDirecciones,
+  getProveedor,
+  getProveedores,
+  DeleteLinea,
+  DeleteProveedor,
+  postDirecciones,
+  postProveedor,
+  relacionarTablas,
+  updateProveedor,
+  changeProveedor,
 } from "../controllers/direcciones.controller.js";
 
 const router = Router();
@@ -22,15 +24,20 @@ router.get("/consumo", getConsumo);
 
 router.get("/proveedores", getProveedores);
 
+router.get("/proveedor/:id", getProveedor);
+
 router.post("/proveedor", postProveedor);
 
-router.post("/proveedor/:id", postDeleteProveedor);
-
-router.post("/borrarLinea/:id", postDeleteLinea);
+router.delete("/proveedor/:id", DeleteProveedor);
 
 router.post("/direcciones", postDirecciones);
 
-router.post("/relaciones/:id", relacionarTablas)
+router.post("/relaciones/:id", relacionarTablas);
 
-router.post("/actualizarProveedor/:id", updateProveedor)
+router.delete("/borrarLinea/:id", DeleteLinea);
+
+router.patch("/actualizarProveedor/:id", updateProveedor);
+
+router.put("/changeProveedor/:id", changeProveedor);
+
 export default router;
